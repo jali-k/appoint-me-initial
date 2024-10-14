@@ -1,0 +1,26 @@
+salon_management/
+│
+├── authentication/
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── ...
+│
+├── appointments/
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── ...
+│
+├── payments/ (optional)
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   └── ...
+│
+├── salon_management/  # Main project folder
+│   ├── settings.py
+│   ├── urls.py
+│   └── ...
+│
+└── manage.py
