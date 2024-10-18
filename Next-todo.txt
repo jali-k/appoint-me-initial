@@ -1,1 +1,2 @@
 Create the authentication part.
+Decided to use npm and webpack for package management
