@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Login</title>
+    <link rel="stylesheet" href="{% static 'dist/bundle.css' %}">
+</head>
+<body>
+    <h1>Login with Phone</h1>
+    
+    <form id="phone-login-form">
+        <input id="phone" type="tel" placeholder="Enter phone number">
+        <button id="sendCode" type="button">Send Verification Code</button>
+    </form>
+
+    <script src="{% static 'dist/bundle.js' %}"></script>
+</body>
+</html>
