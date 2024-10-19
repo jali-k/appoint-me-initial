@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="phone-number-box">
+        <h2>Enter Your Phone Number</h2>
+        <input id="phone" type="tel" placeholder="Enter phone number" />
+        <button id="sendCodeBtn" type="button">Send Verification Code</button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script>
+      const input = document.querySelector("#phone");
+      const iti = window.intlTelInput(input, {
+        initialCountry: "auto",
+        geoIpLookup: function (callback) {
+          fetch("https://ipinfo.io?token=<YOUR_TOKEN>")
+            .then((response) => response.json())
+            .then((data) => {
+              const countryCode = data && data.country ? data.country : "us";
+              callback(countryCode);
+            });
+        },
+        utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+      });
+
+      document
+        .getElementById("sendCodeBtn")
+        .addEventListener("click", function () {
+          const phoneNumber = iti.getNumber(); // Get full international format number
+          fetch("/auth/send-code/", {
+            method: "POST",
+            body: JSON.stringify({ phone_number: phoneNumber }),
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRFToken": "{{ csrf_token }}",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                window.location.href = "/auth/verify-form/";
+              } else {
+                alert("Error sending code");
+              }
+            });
+        });
+    </script>
+
+    <script src="" async defer></script>
+  </body>
+</html>

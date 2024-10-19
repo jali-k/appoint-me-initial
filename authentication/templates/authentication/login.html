@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phone Login</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'authentication/css/styles.css' %}"
+    />
+  </head>
+  <body>
+    <h1>Login with Phone Number</h1>
+    <form id="phoneLoginForm">
+      <input type="tel" id="phone" placeholder="Enter phone number" required />
+      <button type="button" id="sendCode">Send Verification Code</button>
+    </form>
+
+    <!-- Verification code input (optional UI improvement for later steps) -->
+    <form id="verifyForm" style="display: none">
+      <input
+        type="text"
+        id="verificationCode"
+        placeholder="Enter verification code"
+        required
+      />
+      <button type="button" id="verifyCode">Verify Code</button>
+    </form>
+
+    <script src="{% static 'dist/auth.bundle.js' %}"></script>
+  </body>
+</html>
