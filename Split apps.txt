@@ -24,3 +24,25 @@ salon_management/
 │   └── ...
 │
 └── manage.py
+
+
+Parted overwies
+Project Breakdown
+
+1. Project Overview
+Authentication App:
+Users log in via their phone numbers.
+Use intl-tel-input for phone number input and formatting.
+Implement phone verification using an external service (like Twilio for sending SMS).
+Session management for logged-in users.
+Appointment App:
+Users can book appointments (e.g., hair cutting, facial, etc.).
+View available time slots and manage bookings.
+Track users’ past and future appointments.
+
+2. Tech Stack
+Backend: Django
+Frontend: Standard Django templates, with Webpack managing assets like JS and CSS.
+Database: Use Django’s ORM (SQLite for development, PostgreSQL/MySQL for production).
+Phone Authentication: Twilio (or a similar service for sending verification codes).
+Frontend Asset Management: Webpack for managing JavaScript libraries like intl-tel-input.
