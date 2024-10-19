@@ -24,6 +24,9 @@ class User(AbstractBaseUser):
     email = models.EmailField(null=True, blank=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_verified = models.BooleanField(default=False)
 
     objects = UserManager()
 
